@@ -1,0 +1,9 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Changing font */
+    background-color: #f4f4f4; /* Changing background */
+    color: #333; /* Changing text color */
+}
+h1 {
+    color: #ff6347; /* Changing color for all h1 elements */
+}
+
