@@ -4,4 +4,5 @@ nltk
 transformers
 torch
 tensorflow
-tf_keras
+sentencepiece
+tf-keras
