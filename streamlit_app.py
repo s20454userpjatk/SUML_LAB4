@@ -4,9 +4,9 @@ import os
 import nltk
 from transformers import pipeline
 
-# Setting up the translation and sentiment analysis pipelines
-translator = pipeline('translation_en_to_de')
-classifier = pipeline("sentiment-analysis")
+# Specifying models explicitly
+translator = pipeline('translation_en_to_de', model='Helsinki-NLP/opus-mt-en-de')
+classifier = pipeline("sentiment-analysis", model='distilbert-base-uncased-finetuned-sst-2-english')
 
 # Adding custom styles
 def load_css(file_name):
