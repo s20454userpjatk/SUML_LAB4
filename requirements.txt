@@ -1,7 +1,6 @@
-nltk==3.8.1
-transformers==4.40.2
-streamlit==1.34.0
-pandas==2.2.2
-matplotlib==3.8.4
-tf-keras==2.16.0
+streamlit
+pandas
+nltk
+transformers
+torch
 tensorflow
