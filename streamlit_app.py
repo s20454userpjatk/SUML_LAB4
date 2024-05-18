@@ -50,7 +50,6 @@ def validate_input(text):
         return "Proszę używać tylko liter alfabetu."
     return None  # No issues, text is likely valid
 
-
 # Handling emotional tone analysis
 if option == "Wydźwięk emocjonalny tekstu (eng)":
     text = st.text_area("Wpisz tekst po angielsku do analizy:")
@@ -80,7 +79,7 @@ elif option == "Tłumaczenie tekstu z (eng) na (de)":
                     translation = translator(text, max_length=512)  
                     translated_text = translation[0]['translation_text']
                     st.success('Tłumaczenie zakończone!')
-                    st.success('Przetłumaczony tekst:', translated_text)
+                    st.write('Przetłumaczony tekst:', translated_text)
             except Exception as e:
                 st.error(f"Wystąpił błąd podczas tłumaczenia: {str(e)}")
 
