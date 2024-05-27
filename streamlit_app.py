@@ -1,8 +1,6 @@
 import streamlit as st
-import pandas as pd
-import os
-import nltk
 from transformers import pipeline
+import nltk
 
 # Specifying models explicitly
 translator = pipeline('translation_en_to_de', model='Helsinki-NLP/opus-mt-en-de')
@@ -13,15 +11,15 @@ def load_css(file_name):
     with open(file_name, "r") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-# loading css file
+# Loading css file
 load_css('style.css')
 
-# loading image on app
+# Loading image on app
 st.image("Python-logo-new.png")
 
 # Application title and description
 st.title('Aplikacja do Analizy i Tłumaczenia')
-st.write('Aplikacja wykorzystuje Hugging Face do tłumaczenia tekstu z angielskiego na niemiecki. Posiada również funkcje do sprawdzania czy słowo ma wydzwięk emocjonalny')
+st.write('Aplikacja wykorzystuje Hugging Face do tłumaczenia tekstu z angielskiego na niemiecki. Posiada również funkcje do sprawdzania czy słowo ma wydźwięk emocjonalny')
 
 # Instruction how to use app
 st.info('Instrukcja: Wybierz jedną z opcji z listy, wpisz tekst i kliknij Ctrl + Enter aby przetworzyć.')
@@ -44,11 +42,11 @@ def validate_input(text):
     non_english_words = [word for word in tokens if word.lower() not in english_words]
     if non_english_words:
         return f"Nieznane słowa: {', '.join(non_english_words)}. Proszę wprowadzić poprawne słowa angielskie."
-    if any(char.isdigit() for char in text):  # Check for digits
+    if any(char.isdigit() for char in text):
         return "Proszę nie używać cyfr w tekście."
-    if not text.replace(" ", "").isalpha():  # Check for non-alphabetic characters excluding spaces
+    if not text.replace(" ", "").isalpha():
         return "Proszę używać tylko liter alfabetu."
-    return None  # No issues, text is likely valid
+    return None
 
 # Handling emotional tone analysis
 if option == "Wydźwięk emocjonalny tekstu (eng)":
@@ -76,7 +74,7 @@ elif option == "Tłumaczenie tekstu z (eng) na (de)":
         else:
             try:
                 with st.spinner('Tłumaczę...'):
-                    translation = translator(text, max_length=512)  
+                    translation = translator(text, max_length=512)
                     translated_text = translation[0]['translation_text']
                     st.success('Tłumaczenie zakończone!')
                     st.write('Przetłumaczony tekst:', translated_text)
